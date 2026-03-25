@@ -1,0 +1,25 @@
+{
+  "id": "LOLA.C02.TR01",
+  "meta": {
+    "description": "MCP server container images must not use the :latest tag",
+    "controls": [
+      { "framework": "lola-module-standards", "class": "supply-chain", "id": "C02" }
+    ]
+  },
+  "tenets": [
+    {
+      "id": "01",
+      "code": "!has(predicates[0].mcp) || predicates[0].mcp.servers.all(name, srv, !srv.image.endsWith(':latest'))",
+      "predicates": {
+        "types": ["https://lola.dev/module-structure/v1"]
+      },
+      "assessment": {
+        "message": "All MCP server images use pinned versions"
+      },
+      "error": {
+        "message": "One or more MCP server images use the :latest tag",
+        "guidance": "Pin container images to a specific version or digest (e.g., ghcr.io/org/image:v1.2.3 or ghcr.io/org/image@sha256:...)"
+      }
+    }
+  ]
+}

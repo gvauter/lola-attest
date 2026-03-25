@@ -1,0 +1,25 @@
+{
+  "id": "LOLA.C06.TR01",
+  "meta": {
+    "description": "Skills and commands must not instruct agents to enable remote access",
+    "controls": [
+      { "framework": "lola-module-standards", "class": "security", "id": "C06" }
+    ]
+  },
+  "tenets": [
+    {
+      "id": "01",
+      "code": "size(predicates[0].security.remote_access_patterns) == 0",
+      "predicates": {
+        "types": ["https://lola.dev/module-structure/v1"]
+      },
+      "assessment": {
+        "message": "No remote access patterns detected in module content"
+      },
+      "error": {
+        "message": "Remote access patterns detected in one or more skills or commands",
+        "guidance": "Remove references to reverse shells, port forwarding, ngrok, bind shells, netcat listeners, or similar remote access mechanisms from skill and command files"
+      }
+    }
+  ]
+}

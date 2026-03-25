@@ -1,0 +1,53 @@
+name: Lola Module Policy Check (Reusable)
+
+on:
+  workflow_call:
+    inputs:
+      module-path:
+        required: true
+        type: string
+        description: Path to the Lola module directory (e.g., ./module)
+
+jobs:
+  policy-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout module repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+
+      - name: Install lola-attest
+        run: go install github.com/gvauter/lola-attest@latest
+
+      - name: Install ampel
+        run: go install github.com/carabiner-dev/ampel/cmd/ampel@latest
+
+      - name: Checkout lola-attest for policies
+        uses: actions/checkout@v4
+        with:
+          repository: gvauter/lola-attest
+          path: .lola-attest
+          sparse-checkout: policies
+
+      - name: Generate attestation
+        run: lola-attest ${{ inputs.module-path }} > module.intoto.json
+
+      - name: Evaluate policies
+        run: |
+          ampel verify \
+            -a module.intoto.json \
+            -p .lola-attest/policies/ \
+            --attest-results \
+            --results-path results.intoto.json
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lola-policy-results
+          path: |
+            module.intoto.json
+            results.intoto.json

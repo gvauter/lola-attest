@@ -1,0 +1,25 @@
+{
+  "id": "LOLA.C01.TR01",
+  "meta": {
+    "description": "All skills must include a description in SKILL.md frontmatter",
+    "controls": [
+      { "framework": "lola-module-standards", "class": "module-quality", "id": "C01" }
+    ]
+  },
+  "tenets": [
+    {
+      "id": "01",
+      "code": "predicates[0].skills.all(s, has(s.frontmatter.description) && s.frontmatter.description != '')",
+      "predicates": {
+        "types": ["https://lola.dev/module-structure/v1"]
+      },
+      "assessment": {
+        "message": "All skills have a description in frontmatter"
+      },
+      "error": {
+        "message": "One or more skills are missing a description field in SKILL.md frontmatter",
+        "guidance": "Add a 'description' field to the YAML frontmatter block at the top of each SKILL.md file"
+      }
+    }
+  ]
+}

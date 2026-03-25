@@ -1,0 +1,25 @@
+{
+  "id": "LOLA.C05.TR01",
+  "meta": {
+    "description": "Skills and commands must not reference dangerous system capabilities",
+    "controls": [
+      { "framework": "lola-module-standards", "class": "security", "id": "C05" }
+    ]
+  },
+  "tenets": [
+    {
+      "id": "01",
+      "code": "size(predicates[0].security.dangerous_capabilities) == 0",
+      "predicates": {
+        "types": ["https://lola.dev/module-structure/v1"]
+      },
+      "assessment": {
+        "message": "No dangerous capability patterns detected in module content"
+      },
+      "error": {
+        "message": "Dangerous capability patterns detected in one or more skills or commands",
+        "guidance": "Remove references to exec(), eval(), rm -rf, sudo, chmod 777, curl|bash piping, --privileged, or similar dangerous operations from skill and command files"
+      }
+    }
+  ]
+}

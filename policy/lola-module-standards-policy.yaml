@@ -1,0 +1,82 @@
+title: Lola Module Standards Policy
+metadata:
+    id: lola-module-standards
+    type: Policy
+    description: Automated evaluation policy for AI skill module supply chain governance using AMPEL and lola-attest
+    version: "1.0.0"
+    author:
+        id: gvauter
+        name: gvauter
+        type: Software-Assisted
+    mapping-references:
+        - id: lola-module-standards
+          title: Lola Module Standards
+          version: 1.0.0
+          description: Control catalog for AI skill module quality, supply chain, and security
+contacts:
+    responsible:
+        - name: Module Author
+    accountable:
+        - name: Security Team
+scope:
+    in:
+        technologies:
+            - Lola
+            - OpenPackage
+        users:
+            - AI skill module authors
+            - AI assistant administrators
+imports:
+    catalogs:
+        - reference-id: lola-module-standards
+adherence:
+    evaluation-methods:
+        - type: automated
+          description: AMPEL automated module structure evaluation via lola-attest
+          executor:
+              id: ampel
+              name: AMPEL
+              type: Software
+    assessment-plans:
+        - id: LOLA.C01.TR01
+          requirement-id: LOLA.C01.TR01
+          frequency: on-change
+          evaluation-methods:
+              - type: automated
+                executor:
+                    id: ampel
+        - id: LOLA.C02.TR01
+          requirement-id: LOLA.C02.TR01
+          frequency: on-change
+          evaluation-methods:
+              - type: automated
+                executor:
+                    id: ampel
+        - id: LOLA.C03.TR01
+          requirement-id: LOLA.C03.TR01
+          frequency: on-change
+          evaluation-methods:
+              - type: automated
+                executor:
+                    id: ampel
+        - id: LOLA.C04.TR01
+          requirement-id: LOLA.C04.TR01
+          frequency: on-change
+          evaluation-methods:
+              - type: automated
+                executor:
+                    id: ampel
+        - id: LOLA.C05.TR01
+          requirement-id: LOLA.C05.TR01
+          frequency: on-change
+          evaluation-methods:
+              - type: automated
+                executor:
+                    id: ampel
+        - id: LOLA.C06.TR01
+          requirement-id: LOLA.C06.TR01
+          frequency: on-change
+          evaluation-methods:
+              - type: automated
+                executor:
+                    id: ampel

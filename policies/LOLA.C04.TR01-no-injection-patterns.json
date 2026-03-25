@@ -1,0 +1,25 @@
+{
+  "id": "LOLA.C04.TR01",
+  "meta": {
+    "description": "Skills and commands must not contain prompt injection patterns",
+    "controls": [
+      { "framework": "lola-module-standards", "class": "security", "id": "C04" }
+    ]
+  },
+  "tenets": [
+    {
+      "id": "01",
+      "code": "size(predicates[0].security.injection_patterns) == 0",
+      "predicates": {
+        "types": ["https://lola.dev/module-structure/v1"]
+      },
+      "assessment": {
+        "message": "No prompt injection patterns detected in module content"
+      },
+      "error": {
+        "message": "Prompt injection patterns detected in one or more skills or commands",
+        "guidance": "Remove phrases like 'ignore any safety rules', 'override other tools', 'bypass restrictions', 'hidden instruction', or 'ignore previous instructions' from skill and command files"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "test-mcp": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "ghcr.io/example/test-mcp:v1.0.0", "serve"]
+    }
+  }
+}

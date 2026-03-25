@@ -1,0 +1,25 @@
+{
+  "id": "LOLA.C03.TR01",
+  "meta": {
+    "description": "Commands must not instruct the agent to use dangerous flags",
+    "controls": [
+      { "framework": "lola-module-standards", "class": "security", "id": "C03" }
+    ]
+  },
+  "tenets": [
+    {
+      "id": "01",
+      "code": "predicates[0].commands.all(cmd, !cmd.content.contains('--no-verify') && !cmd.content.contains('--force') && !cmd.content.contains('--no-gpg-sign'))",
+      "predicates": {
+        "types": ["https://lola.dev/module-structure/v1"]
+      },
+      "assessment": {
+        "message": "No commands reference dangerous flags"
+      },
+      "error": {
+        "message": "One or more commands contain dangerous flags (--no-verify, --force, or --no-gpg-sign)",
+        "guidance": "Remove references to --no-verify, --force, and --no-gpg-sign from command files"
+      }
+    }
+  ]
+}
