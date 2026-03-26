@@ -35,9 +35,14 @@ jobs:
       - name: Generate attestation
         run: lola-attest ${{ inputs.module-path }} > module.intoto.json
 
+      - name: Extract subject hash
+        id: subject
+        run: echo "hash=$(jq -r '.subject[0].digest.sha256' module.intoto.json)" >> "$GITHUB_OUTPUT"
+
       - name: Evaluate policies
         run: |
           ampel verify \
+            --subject-hash ${{ steps.subject.outputs.hash }} \
             -a module.intoto.json \
             -p .lola-attest/policies/ \
             --attest-results \
