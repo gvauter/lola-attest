@@ -9,7 +9,7 @@
   "tenets": [
     {
       "id": "01",
-      "code": "size(predicates[0].security.injection_patterns) == 0",
+      "code": "size(predicates[0].data.security.injection_patterns) == 0",
       "predicates": {
         "types": ["https://lola.dev/module-structure/v1"]
       },

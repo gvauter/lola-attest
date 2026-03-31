@@ -9,7 +9,7 @@
   "tenets": [
     {
       "id": "01",
-      "code": "predicates[0].commands.all(cmd, !cmd.content.contains('--no-verify') && !cmd.content.contains('--force') && !cmd.content.contains('--no-gpg-sign'))",
+      "code": "predicates[0].data.commands.all(cmd, !cmd.content.contains('--no-verify') && !cmd.content.contains('--force') && !cmd.content.contains('--no-gpg-sign'))",
       "predicates": {
         "types": ["https://lola.dev/module-structure/v1"]
       },

@@ -9,7 +9,7 @@
   "tenets": [
     {
       "id": "01",
-      "code": "!has(predicates[0].mcp) || predicates[0].mcp.servers.all(name, srv, !srv.image.endsWith(':latest'))",
+      "code": "!has(predicates[0].data.mcp) || predicates[0].data.mcp.servers.all(name, srv, !srv.image.endsWith(':latest'))",
       "predicates": {
         "types": ["https://lola.dev/module-structure/v1"]
       },
