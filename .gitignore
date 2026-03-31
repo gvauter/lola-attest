@@ -24,6 +24,13 @@ profile.cov
 go.work
 go.work.sum
 
+# Build output
+/lola-attest
+
+# Test artifacts
+*.intoto.json
+lola-policy-bundle.json
+
 # env file
 .env
 
