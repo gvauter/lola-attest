@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  unit-tests:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,6 +13,9 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.24'
+
+      - name: Install ampel
+        run: go install github.com/carabiner-dev/ampel/cmd/ampel@latest
 
       - name: Run tests
         run: go test ./... -v
