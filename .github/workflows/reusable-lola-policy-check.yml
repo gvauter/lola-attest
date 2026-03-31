@@ -37,7 +37,7 @@ jobs:
 
       - name: Extract subject hash
         id: subject
-        run: echo "hash=$(jq -r '.subject[0].digest.sha256' module.intoto.json)" >> "$GITHUB_OUTPUT"
+        run: echo "hash=sha256:$(jq -r '.subject[0].digest.sha256' module.intoto.json)" >> "$GITHUB_OUTPUT"
 
       - name: Evaluate policies
         run: |

@@ -9,7 +9,7 @@
   "tenets": [
     {
       "id": "01",
-      "code": "predicates[0].skills.all(s, has(s.frontmatter.description) && s.frontmatter.description != '')",
+      "code": "predicates[0].data.skills.all(s, has(s.frontmatter.description) && s.frontmatter.description != '')",
       "predicates": {
         "types": ["https://lola.dev/module-structure/v1"]
       },
