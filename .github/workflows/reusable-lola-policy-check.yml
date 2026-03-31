@@ -40,7 +40,8 @@ jobs:
         run: echo "hash=sha256:$(jq -r '.subject[0].digest.sha256' module.intoto.json)" >> "$GITHUB_OUTPUT"
 
       - name: Bundle policies
-        run: jq -s '{id: "lola-module-standards", policies: .}' .lola-attest/policies/*.json > lola-policy-bundle.json
+        run: |
+          jq -s '{"id": "lola-module-standards", "policies": .}' .lola-attest/policies/*.json > lola-policy-bundle.json
 
       - name: Evaluate policies
         run: |
